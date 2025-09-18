@@ -3,10 +3,6 @@
   <meta charset="UTF-8">
   <title>Giorno dell’italiano? Jour du français ?</title>
   <style>
-    body { font-family: Arial, sans-serif; text-align: center; margin-top: 50px; }
-    #result { font-size: 1.5em; margin-top: 20px; }
-  </style>
-  <style>
     body {
       font-family: Arial, sans-serif;
       text-align: center;
@@ -14,17 +10,8 @@
       transition: background 0.5s, color 0.5s;
     }
     h1 {
-      font-size: 2em;
+      font-size: 2.5em;
       margin-bottom: 30px;
-    }
-    #risultato {
-      font-size: 1.8em;
-      font-weight: bold;
-      padding: 20px 30px;
-      border-radius: 12px;
-      display: inline-block;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.5);
-      transition: background 0.5s, color 0.5s;
     }
 
     /* Tema Giorno ITA */
@@ -32,18 +19,10 @@
       background: #0f3d0f;
       color: #e8ffe8;
     }
-    body.giornoITA #risultato {
-      background: #1c5c1c;
-      color: #e8ffe8;
-    }
 
     /* Tema Jour FRA */
     body.jourFRA {
       background: #0f1f3d;
-      color: #e8f0ff;
-    }
-    body.jourFRA #risultato {
-      background: #1c2f5c;
       color: #e8f0ff;
     }
   </style>
@@ -55,15 +34,16 @@
 
   <script>
     function itafra() {
-      const start = new Date(2013, 8, 21);
+      const start = new Date("2013-08-21");
       const oggi = new Date();
 
       const delta = Math.floor((oggi - start) / (1000 * 60 * 60 * 24));
-      const giornojour = (delta % 2 === 0) ? "Oggi è il giorno dell’italiano" : "Aujourd’hui c’est le jour du français";
+      const giornojour = (delta % 2 === 1) ? "Oggi è il giorno dell’italiano" : "Aujourd’hui c’est le jour du français";
 
       document.getElementById("result").innerHTML =
-          `<div style="font-size:0.8em; opacity:0.8;">${oggi.toLocaleDateString("it-IT")}</div>
-          <div style="font-size:1.2em; margin-top:10px;">${giornojour}</div>`;
+          `<div style="opacity:0.8;">${oggi.toLocaleDateString("it-IT")}</div>
+           <div style="font-size:xx-large; font-weight: bold; margin-top:10px;">${giornojour}</div>
+           <div style="font-size:small; margin-top:40px;">&hearts; ${delta} giorni/jours</div>`;
 
       document.body.classList.remove("giornoITA", "jourFRA");
       document.body.classList.add(giornojour === "Oggi è il giorno dell’italiano" ? "giornoITA" : "jourFRA");
